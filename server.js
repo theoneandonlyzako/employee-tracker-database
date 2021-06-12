@@ -6,12 +6,11 @@ const connection = require("./db/connection.js");
 let deptNames = [];
 let managerNames = [];
 
-
 // User prompts 
 function openProcess() {
 
   console.log("-- Welcome to the Employee Tracker Database --");
-  
+
   inquirer.prompt(
     {
       type: "list",
@@ -48,8 +47,6 @@ function openProcess() {
     if (err) throw err;
   })
 };
-
-
 
 // Creates list of departments
 function getDeptNames() {
@@ -192,7 +189,6 @@ function getEmployeeNameQuestion(employeeNames) {
   }
 };
 
-
 // Department functions
 
 // Viewd all departments
@@ -251,8 +247,6 @@ async function viewByDepartments() {
     if (err) throw err;
   })
 };
-
-
 
 // Employee functions
 
@@ -443,7 +437,6 @@ function viewRoles() {
       openProcess();
     })
 };
-
 
 // starts questionare
 openProcess();
