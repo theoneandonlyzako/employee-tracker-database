@@ -9,7 +9,7 @@ let managerNames = [];
 // User prompts 
 function openProcess() {
 
-  console.log("-- Welcome to the Employee Tracker Database --");
+  console.log("-- Welcome to Pied Piper's Employee Database, written by… you guessed it, Son of Anton. --");
 
   inquirer.prompt(
     {
@@ -47,6 +47,9 @@ function openProcess() {
     if (err) throw err;
   })
 };
+
+
+// Promises, Promises! 
 
 // Creates list of departments
 function getDeptNames() {
@@ -86,7 +89,7 @@ function getRoleNames() {
     connection.query("SELECT id, title FROM role", function (err, res) {
       const names = res.map(obj => obj.title);
       resolve(names);
-    })
+    }) 
   });
 };
 
@@ -252,9 +255,9 @@ async function viewByDepartments() {
 
 // Adds employee
 async function addEmployee() {
+  const employeeQuestions = await getEmployeeQuestions(managerNames, roleNames);
   const managerNames = await getManagerNames();
   const roleNames = await getRoleNames();
-  const employeeQuestions = await getEmployeeQuestions(managerNames, roleNames);
   const roleId = await getRoleId(employeeQuestions[0]);
   const managerId = await getManagerId(employeeQuestions[1]);
   inquirer.prompt([
@@ -318,7 +321,7 @@ async function deleteEmployee() {
 
 // Views all employees
 function viewAllEmployees() {
-  console.log("Selecting all employees...\n");
+  console.log("All of PiedPiper's employees...\n");
   connection.query(
     "SELECT * FROM employee", function (err, res) {
       if (err) throw err;

@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS datacorp_db;
+DROP DATABASE IF EXISTS piedpiper_db;
 
-CREATE DATABASE datacorp_db;
+CREATE DATABASE piedpiper_db;
 
-USE datacorp_db;
+USE piedpiper_db;
 
 -- create department table --
 CREATE TABLE department (
@@ -11,7 +11,7 @@ CREATE TABLE department (
 );
 
 -- create role table --
-CREATE TABLE role (
+CREATE TABLE  role (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30), -- to hold role title --
   salary DECIMAL(10,2), -- to hold role salary --
