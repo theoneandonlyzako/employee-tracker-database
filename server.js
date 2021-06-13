@@ -9,17 +9,17 @@ let managerNames = [];
 // User prompts 
 function openProcess() {
 
-  console.log("--- Welcome to Pied Piper's Employee Database, written by… you guessed it, Son of Anton. ---");
+  console.log("==== Welcome to Pied Piper's Employee Database, written by… you guessed it, Son of Anton. ====");
 
-  inquirer.prompt(
+  inquirer.prompt([
     {
       type: "list",
-      message: "What would you like to do?",
       name: "action",
+      message: "What would you like to do?",
       choices: ["Add department", "Add employee", "Add role", "Delete employee", "Update employee role", "View departments", "View all employees", "View employees by department", "View employees by role", "View roles", "Done"]
     }
-  ).then(function (response) {
-    console.log(response)
+  ]).then(function (response) {
+    // console.log(response)
     switch (response.action) {
       case "Add department": addDepartment()
         break
@@ -196,7 +196,7 @@ function getEmployeeNameQuestion(employeeNames) {
 
 // Viewd all departments
 function viewDepartments() {
-  console.log("Selecting all departments...\n");
+  console.log("Displaying all departments...\n");
   connection.query(
     "SELECT * FROM department", function (err, res) {
       if (err) throw err;
@@ -236,7 +236,7 @@ async function viewByDepartments() {
   const deptListQ = await getDepartmentQuestion(deptNames);
   inquirer.prompt(deptListQ).then(response => {
     console.log(response);
-    console.log("Selecting employees by department...\n");
+    console.log("Displaying employees by department...\n");
     connection.query("SELECT department.id, department.name, role.id, role.title, role.department_id, employee.first_name, employee.last_name, employee.role_id FROM department INNER JOIN role ON department.id = role.department_id INNER JOIN employee ON role.id = employee.role_id WHERE ?",
       {
         name: response.chosenDept
@@ -416,7 +416,7 @@ async function viewByRole() {
   const roleNames = await getRoleNames();
   const roleQuestion = await getRoleNameQuestion(roleNames);
   inquirer.prompt(roleQuestion).then(response => {
-    console.log("Selecting all employees by role...\n");
+    console.log("Displaying all employees by role...\n");
     connection.query("SELECT role.id, role.title, employee.first_name, employee.last_name, employee.role_id FROM role INNER JOIN employee ON role.id = employee.role_id WHERE ?",
       {
         title: response.jobTitle
@@ -433,7 +433,7 @@ async function viewByRole() {
 
 // View all roles
 function viewRoles() {
-  console.log("Selecting all roles...\n");
+  console.log("Displaying all roles...\n");
   connection.query(
     "SELECT id, title FROM role", function (err, res) {
       if (err) throw err;
