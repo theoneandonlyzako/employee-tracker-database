@@ -9,7 +9,7 @@ let managerNames = [];
 // User prompts 
 function openProcess() {
 
-  console.log("-- Welcome to Pied Piper's Employee Database, written by… you guessed it, Son of Anton. --");
+  console.log("--- Welcome to Pied Piper's Employee Database, written by… you guessed it, Son of Anton. ---");
 
   inquirer.prompt(
     {
@@ -49,7 +49,7 @@ function openProcess() {
 };
 
 
-// Promises, Promises! 
+// Promises, Promises! I'm all through with promises, promises now.
 
 // Creates list of departments
 function getDeptNames() {
@@ -64,7 +64,7 @@ function getDeptNames() {
 // Creates list of employees
 function getEmployeeNames() {
   return new Promise(function (resolve, reject) {
-    const queryStr = "SELECT CONCAT(first_name,' ',last_name) AS employee_name FROM employee";
+    const queryStr = "SELECT CONCAT(first_name,' ',last_name) AS employee_name FROM employee;";
     connection.query(queryStr, function (err, res) {
       const names = res.map(obj => obj.employee_name);
       resolve(names);
@@ -75,7 +75,7 @@ function getEmployeeNames() {
 // Creates list of managers
 function getManagerNames() {
   return new Promise(function (resolve, reject) {
-    const queryStr = "SELECT id, CONCAT(first_name,' ',last_name) AS manager_name FROM employee WHERE manager_id IS NULL";
+    const queryStr = "SELECT id, CONCAT(first_name,' ',last_name) AS manager_name FROM employee;";
     connection.query(queryStr, function (err, res) {
       const names = res.map(obj => obj.manager_name);
       resolve(names);
@@ -255,9 +255,10 @@ async function viewByDepartments() {
 
 // Adds employee
 async function addEmployee() {
-  const employeeQuestions = await getEmployeeQuestions(managerNames, roleNames);
   const managerNames = await getManagerNames();
+  console.log(managerNames);  
   const roleNames = await getRoleNames();
+  const employeeQuestions = await getEmployeeQuestions(managerNames, roleNames);
   const roleId = await getRoleId(employeeQuestions[0]);
   const managerId = await getManagerId(employeeQuestions[1]);
   inquirer.prompt([
