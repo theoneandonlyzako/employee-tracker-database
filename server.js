@@ -256,7 +256,7 @@ async function viewByDepartments() {
 // Adds employee
 async function addEmployee() {
   const managerNames = await getManagerNames();
-  console.log(managerNames);  
+  // console.log(managerNames);  
   const roleNames = await getRoleNames();
   const employeeQuestions = await getEmployeeQuestions(managerNames, roleNames);
   const roleId = await getRoleId(employeeQuestions[0]);
