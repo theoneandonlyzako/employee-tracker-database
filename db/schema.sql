@@ -26,6 +26,6 @@ CREATE TABLE employee (
   last_name VARCHAR(30) NOT NULL, -- to hold employee last name --
   role_id INT NOT NULL, -- to hold reference to employee role --
   manager_id INT -- to hold reference to another employee that is manager of the current employee. This field might be null if the employee has no manager. --
-  CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE,
-  CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
+  -- CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE,
+  -- CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
 );

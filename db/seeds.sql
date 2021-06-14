@@ -6,14 +6,14 @@ VALUES ("Management"), ("Development"), ("Engineer"), ("Design"), ("Directors");
 
 -- Creates employee role
 INSERT INTO role (title, salary, department_id)
-VALUES ("CEO", 269375, 1),
+VALUES ("CEO", 96969, 1),
 ("Business Development", 269375, 2),
 ("Systems Architect", 63976, 2),
 ("Senior Programmer", 30001, 3),
-("CFO", 96969, 1),
+("CFO", 46347, 1),
 ("Investor", 0, 5),
-("Platform Engineer", 46347, 3),
-("Lead Designer", 30001, 4),
+("Platform Engineer", 56347, 3),
+("Lead Designer", 48601, 4),
 ("Board Of Directors", 0, 5);
 
 -- Creates employee
@@ -23,7 +23,7 @@ VALUES ("Erlich", "Bachman", 6, null),
 ("Bertram", "Gilfoyle", 3, null),
 ("Dinesh", "Chugtai", 4, 2),
 ("Jared", "Dunn", 5, 2),
-("Carla", "Walton", 7, 1),
-("Monica", "Hall", 5, 2),
-("Dang", "D", 8, 1),
-("Jian-Yang", "T", 10, 3);
+("Carla", "Walton", 7, 4),
+("Monica", "Hall", 5, 5),
+("Dang", "D", 8, 2),
+("Jian-Yang", "T", 10, 1);
